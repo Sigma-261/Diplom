@@ -1,0 +1,16 @@
+﻿@model Diplom.Models.News
+
+<h2>Добавление пользователя</h2>
+<form asp-action="create" asp-controller="news">
+    <p>
+        <label asp-for="Name">Имя</label><br />
+        <input type="text" asp-for="Name" />
+    </p>
+    <p>
+        <label asp-for="Text">Текст</label><br />
+        @Html.TextAreaFor(m => m.Text, new { @class = "form-control" })
+    </p>
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+</form>
