@@ -1,0 +1,20 @@
+﻿@model Diplom.Models.News
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>Вы действительно хотите удалить данную новость?</h3>
+<div>
+    <h3>Название:  @Html.DisplayFor(m => m.Name)</h3>
+    <p>Текст: @Html.DisplayFor(m => m.Text)</p>
+    <p>Дата: @Html.DisplayFor(m => m.CreatedDate)</p>
+    <p><i>Id новости: @Html.DisplayFor(m => m.Id)</i></p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <input type="submit" value="Удалить" />
+    }
+
+    @Html.ActionLink("Назад", "Index", "News")
+</div>

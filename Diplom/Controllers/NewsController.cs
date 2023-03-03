@@ -13,20 +13,81 @@ namespace Diplom.Controllers
         {
             db = context;
         }
+
         public async Task<IActionResult> Index()
         {
             return View(await db.News.ToListAsync());
         }
-        public IActionResult Create()
+
+        /// <summary>
+        /// Просмотри сведений о новости
+        /// </summary>
+        /// <param name="id">Id возвращаемого элемента</param>
+        /// <returns></returns>
+        public ActionResult GetNews(int id)
         {
-            return View();
+            News? news = db.News.Find(id);
+            if (news != null)
+            {
+                return PartialView("Read", news);
+            }
+            return View("Index");
+        }
+
+        // Добавление
+        public ActionResult CreateNews()
+        {
+            return PartialView("Create");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateNews(News news)
+        {
+            db.News.Add(news);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        // Редактирование
+        public ActionResult UpdateNews(int id)
+        {
+            News? news = db.News.Find(id);
+            if (news != null)
+            {
+                return PartialView("Update", news);
+            }
+            return View("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateNews(News news)
+        {
+            db.Entry(news).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        // Удаление
+        public ActionResult DeleteNews(int id)
+        {
+            News? news = db.News.Find(id);
+            if (news != null)
+            {
+                return PartialView("Delete", news);
+            }
+            return View("Index");
         }
         [HttpPost]
-        public async Task<IActionResult> Create(News news)
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteNews(News news)
         {
-            news.CreatedDate = DateTime.Now;
-            db.News.Add(news);
-            await db.SaveChangesAsync();
+            if (news != null)
+            {
+                db.News.Remove(news);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
     }

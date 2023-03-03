@@ -1,14 +1,24 @@
 ﻿@model IEnumerable<Diplom.Models.News>
-
-<h2>Список новостей</h2>
-<p><a asp-action="Create">Добавить новость</a></p>
-<table class="table">
-    <tr><th>Имя</th><th>Текст</th></tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.Name</td>
-            <td>@item.Text</td>
-        </tr>
-    }
-</table>
+<html>
+<head>
+    <title></title>
+    <link href='@Url.Content("~/Content/themes/base/jquery-ui.css")' rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h2>Список Новостей</h2>
+    <table border="1">
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>
+                    @Html.ActionLink("Смотреть", "GetNews", "News", new { id = c.Id }) |
+                    @Html.ActionLink("Изменить", "UpdateNews", "News", new { id = c.Id }) |
+                    @Html.ActionLink("Удалить", "DeleteNews", "News", new { id = c.Id })
+                </td>
+            </tr>
+        }
+    </table>
+    <p> @Html.ActionLink("Добавить", "CreateNews", "News")</p>
+</body>
+</html>
