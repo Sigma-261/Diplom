@@ -1,0 +1,19 @@
+﻿@model Diplom.Models.Club
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>Вы действительно хотите удалить данный кружок?</h3>
+<div>
+    <h3>Название:  @Html.DisplayFor(m => m.Name)</h3>
+    <p>Описание: @Html.DisplayFor(m => m.Description)</p>
+    <p><i>Id кружка: @Html.DisplayFor(m => m.Id)</i></p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <input type="submit" value="Удалить" />
+    }
+
+    @Html.ActionLink("Назад", "Index", "Clubs")
+</div>

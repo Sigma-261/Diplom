@@ -6,6 +6,7 @@ namespace Diplom.DB
     public class ApplicationContext: DbContext
     {
         public DbSet<News> News { get; set; }
+        public DbSet<Club> Clubs { get; set; }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options = null) : base(options)
         {
@@ -14,7 +15,7 @@ namespace Diplom.DB
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Определение локации
+            // Определение новостей
             News New1 = new News
             {
                 Id = 1,
@@ -22,7 +23,17 @@ namespace Diplom.DB
                 Text = "Текст новости",
                 CreatedDate = DateTime.Now
             };
+            // Определение кружков
+            Club Club1 = new Club
+            {
+                Id = 1,
+                Name = "Рисунок и живопись",
+                Description = 
+                "Рисование помогает ребенку познать окружающий мир, приучает внимательно наблюдать и анализировать форму предметов, развивает зрительную память, пространственное мышление и способность к образному мышлению. Оно учит точности расчета, учит познавать красоту природы, мыслить и чувствовать, воспитывает чувство доброты, сопереживания и сочувствия окружающим."
+            };
+
             modelBuilder.Entity<News>().HasData(New1);
+            modelBuilder.Entity<Club>().HasData(Club1);
         }
         }
 }

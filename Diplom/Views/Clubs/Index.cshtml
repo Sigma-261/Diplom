@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Diplom.Models.Club>
+<html>
+<head>
+    <title></title>
+    <link href='@Url.Content("~/Content/themes/base/jquery-ui.css")' rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h2>Список Кружков</h2>
+    <table border="1">
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>
+                    @Html.ActionLink("Смотреть", "GetClub", "Clubs", new { id = c.Id }) |
+                    @Html.ActionLink("Изменить", "UpdateClub", "Clubs", new { id = c.Id }) |
+                    @Html.ActionLink("Удалить", "DeleteClub", "Clubs", new { id = c.Id })
+                </td>
+            </tr>
+        }
+    </table>
+    <p> @Html.ActionLink("Добавить", "CreateClub", "Clubs")</p>
+</body>
+</html>
