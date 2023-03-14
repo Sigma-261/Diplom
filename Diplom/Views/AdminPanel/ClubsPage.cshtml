@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Diplom.Models.Club>
+<html>
+<body>
+    <h2>Список Кружков</h2>
+    <table border="1">
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>
+                    @Html.ActionLink("Смотреть", "GetClub", "AdminPanel", new { id = c.Id }) |
+                    @Html.ActionLink("Изменить", "UpdateClub", "AdminPanel", new { id = c.Id }) |
+                    @Html.ActionLink("Удалить", "DeleteClub", "AdminPanel", new { id = c.Id })
+                </td>
+            </tr>
+        }
+    </table>
+    <p> @Html.ActionLink("Добавить", "CreateClub", "AdminPanel")</p>
+</body>
+</html>

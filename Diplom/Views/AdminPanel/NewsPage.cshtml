@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Diplom.Models.News>
+<body>
+    <h2>Список Новостей</h2>
+    <table border="1">
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>
+                    @Html.ActionLink("Просмотреть", "GetNews", "AdminPanel", new { id = c.Id }) |
+                    @Html.ActionLink("Изменить", "UpdateNews", "AdminPanel", new { id = c.Id }) |
+                    @Html.ActionLink("Удалить", "DeleteNews", "AdminPanel", new { id = c.Id })
+                </td>
+            </tr>
+        }
+    </table>
+    <p> @Html.ActionLink("Добавить", "CreateNews", "AdminPanel")</p>
+</body>

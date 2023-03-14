@@ -1,0 +1,18 @@
+﻿@model Diplom.Models.Club
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            Название кружка
+            <p>@Html.EditorFor(model => model.Name)</p>
+        </div>
+
+        <div>
+            Описание кружка
+            <p>@Html.TextAreaFor(model => model.Description, 10, 10, null)</p>
+        </div>
+
+        <p><input type="submit" value="Сохранить" /></p>
+    }
+</div>

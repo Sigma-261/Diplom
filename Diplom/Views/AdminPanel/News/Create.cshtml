@@ -1,0 +1,22 @@
+﻿@model Diplom.Models.News
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            Название новости
+            <p>@Html.EditorFor(model => model.Name)</p>
+        </div>
+
+        <div>
+            Текст новости
+            <p>@Html.TextAreaFor(model => model.Text, 10, 10, null)</p>
+        </div>
+
+        <div>
+            Дата новости
+            <input class="form-control" asp-for="CreatedDate" asp-format="{0:yyyy-MM-ddTHH:mm}"/>
+        </div>
+        <p><input type="submit" value="Добавить" /></p>
+    }
+</div>

@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li>@Html.ActionLink("Главная", "Index", "AdminPanel")</li>
+            <li>@Html.ActionLink("Управление новостями", "NewsPage", "AdminPanel")</li>
+            <li>@Html.ActionLink("Управление кружками", "ClubsPage", "AdminPanel")</li><br>
+
+            <li>@Html.ActionLink("Выйти из панели администратирования", "Logout", "Account")</li>
+        </ul>
+    </nav>
+    @RenderBody()
+</body>
+</html>
