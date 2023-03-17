@@ -1,6 +1,9 @@
 ﻿@model Diplom.Models.News
+@{
+    Layout = "~/Views/AdminPanel/_Layout.cshtml";
+}
 <div>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("CreateNews", "AdminPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         <div>
@@ -15,8 +18,13 @@
 
         <div>
             Дата новости
-            <input class="form-control" asp-for="CreatedDate" asp-format="{0:yyyy-MM-ddTHH:mm}"/>
+            <input class="form-control" asp-for="CreatedDate" asp-format="{0:yyyy-MM-ddTHH:mm}" />
         </div>
+
+        <h3>Выберите файлы для загрузки</h3>
+        <input type="file" name="uploads" multiple="" />
+
         <p><input type="submit" value="Добавить" /></p>
     }
 </div>
+

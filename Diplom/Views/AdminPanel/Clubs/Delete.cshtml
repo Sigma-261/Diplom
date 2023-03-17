@@ -1,4 +1,7 @@
-﻿@model Diplom.Models.Club
+﻿@{
+    Layout = "~/Views/AdminPanel/_Layout.cshtml";
+}
+@model Diplom.Models.Club
 <h3>Вы действительно хотите удалить данный кружок?</h3>
 <div>
     <h3>Название:  @Html.DisplayFor(m => m.Name)</h3>

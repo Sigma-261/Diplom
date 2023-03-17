@@ -9,7 +9,7 @@ namespace Diplom.DB
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Admin> Admins { get; set; }
 
-
+        public DbSet<FileModel> Files { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> options = null) : base(options)
         {
             Database.EnsureCreated();

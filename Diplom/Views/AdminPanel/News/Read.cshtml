@@ -1,7 +1,18 @@
-﻿@model Diplom.Models.News
-<div>
-    <h3>Название:  @Html.DisplayFor(m => m.Name)</h3>
-    <p>Текст: @Html.DisplayFor(m => m.Text)</p>
-    <p>Дата: @Html.DisplayFor(m => m.CreatedDate)</p>
-    <p><i>Id новости: @Html.DisplayFor(m => m.Id)</i></p>
-</div>
+﻿@{
+    Layout = "~/Views/AdminPanel/_Layout.cshtml";
+}
+@model Diplom.Models.ViewModels.NewsViewModel
+<body>
+    <div>
+        <h3>Название:  @Html.DisplayFor(m => m.News.Name)</h3>
+        <p>Текст: @Html.DisplayFor(m => m.News.Text)</p>
+        <p>Дата: @Html.DisplayFor(m => m.News.CreatedDate)</p>
+        <p><i>Id новости: @Html.DisplayFor(m => m.News.Id)</i></p>
+
+        <p>Изображения</p>
+        @foreach (var f in Model.ImagesPath)
+        {
+            <p><img src="@Url.Content("~/Images/News/" + Model.News.Id + "/" + f)"></p>
+        }
+    </div>
+</body>

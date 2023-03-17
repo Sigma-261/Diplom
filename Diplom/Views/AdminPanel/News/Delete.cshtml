@@ -1,4 +1,7 @@
-﻿@model Diplom.Models.News
+﻿@{
+    Layout = "~/Views/AdminPanel/_Layout.cshtml";
+}
+@model Diplom.Models.News
 <h3>Вы действительно хотите удалить данную новость?</h3>
 <div>
     <h3>Название:  @Html.DisplayFor(m => m.Name)</h3>

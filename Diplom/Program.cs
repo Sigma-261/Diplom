@@ -24,7 +24,7 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 app.UseAuthentication();   // добавление middleware аутентификации 
-app.UseAuthorization();   // добавление middleware авторизации 
+app.UseAuthorization();   // добавление middleware авторизации
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

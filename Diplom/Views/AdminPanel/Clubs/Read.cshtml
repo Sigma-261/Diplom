@@ -1,4 +1,7 @@
-﻿@model Diplom.Models.Club
+﻿@{
+    Layout = "~/Views/AdminPanel/_Layout.cshtml";
+}
+@model Diplom.Models.Club
 <div>
     <h3>Название:  @Html.DisplayFor(m => m.Name)</h3>
     <p>Описание: @Html.DisplayFor(m => m.Description)</p>
